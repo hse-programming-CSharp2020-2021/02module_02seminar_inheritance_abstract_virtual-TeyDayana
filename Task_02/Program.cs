@@ -62,33 +62,51 @@ namespace Task_02
             Dog dog;
             Cow cow;
 
-            string dogName = Console.ReadLine();
-            int dogAge = IntInput();
-            string breed = Console.ReadLine();
-            bool isTrained = BoolInput();
+            try
+            {
+                string dogName = Console.ReadLine();
+                int dogAge = IntInput();
+                string breed = Console.ReadLine();
+                bool isTrained = BoolInput();
 
-            string cowName = Console.ReadLine();
-            int cowAge = IntInput();
-            int milkQuantity = IntInput();
+                string cowName = Console.ReadLine();
+                int cowAge = IntInput();
+                int milkQuantity = IntInput();
 
-            dog = new Dog(dogName, dogAge, breed, isTrained);
-            dog.AnimalSound();
-            Console.WriteLine(dog.AnimalInfo());
+                dog = new Dog(dogName, dogAge, breed, isTrained);
+                dog.AnimalSound();
+                Console.WriteLine(dog.AnimalInfo());
 
-            cow = new Cow(cowName, cowAge, milkQuantity);
-            cow.AnimalSound();
-            Console.WriteLine(cow.AnimalInfo());
+                cow = new Cow(cowName, cowAge, milkQuantity);
+                cow.AnimalSound();
+                Console.WriteLine(cow.AnimalInfo());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return;
+            }
         }
 
         static bool BoolInput()
         {
             //обработать строковый ввод пользователя ("true"/"false")
+            bool trained;
+            if (!bool.TryParse(Console.ReadLine(), out trained))
+                throw new Exception("Incorrect input!");
+
+            return trained;
         }
 
         static int IntInput()
         {
             //обработать ввод integer, в случае, если пользователь ввел не 
             //int выбросить Exception (обрабатывать не нужно).
+            int age;
+            if (!int.TryParse(Console.ReadLine(), out age) || age <= 0)
+                throw new Exception("Incorrect input!");
+
+            return age;
         }
     }
 
@@ -106,6 +124,7 @@ namespace Task_02
             set
             {
                 //выбросьте исключение, если введена пустая строка
+                if (value == null) throw new Exception("Incorrect input!");
                 name = value;
             }
         }
@@ -119,6 +138,7 @@ namespace Task_02
             set
             {
                 //выбросьте исключение, если введена пустая строка
+                if (value == null) throw new Exception("Incorrect input!");
                 age = value;
             }
         }
@@ -136,6 +156,10 @@ namespace Task_02
         public Dog(string name, int age, string breed, bool isTrained)
         {
             //реализуйте конструктор
+            Name = name;
+            Age = age;
+            Breed = breed;
+            IsTrained = isTrained;
         }
 
         public string Breed
@@ -147,6 +171,7 @@ namespace Task_02
             private set
             {
                 //выбросьте исключение, если введена пустая строка
+                if (value == null) throw new Exception("Incorrect input!");
                 breed = value;
             }
         }
@@ -177,7 +202,7 @@ namespace Task_02
             return $"Name: {Name}{Environment.NewLine}" +
                    $"Age: {Age}{Environment.NewLine}" +
                    $"Breed: {Breed}{Environment.NewLine}" +
-                   $"Trained: {IsTrained}{Environment.NewLine}";
+                   $"Trained: {IsTrained}";
         }
     }
 
@@ -188,16 +213,19 @@ namespace Task_02
         public Cow(string name, int age, int milkQuantity)
         {
             //реализуйте конструктор
+            Name = name;
+            Age = age;
+            MilkQuantity = milkQuantity;
         }
 
-        public int MilkQuantity 
+        public int MilkQuantity
         {
-            get => milkQuantity; 
+            get => milkQuantity;
             set
             {
                 if (value < 0)
                 {
-                    throw new Exception();
+                    throw new Exception("Incorrect input!");
                 }
                 milkQuantity = value;
             }
