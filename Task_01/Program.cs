@@ -48,9 +48,10 @@ namespace Task_01
         {
             int n;
             //добавьте проверку на некорректную длинну массива
-            if (!int.TryParse(Console.ReadLine(), out n))
+            if (!int.TryParse(Console.ReadLine(), out n) || n <= 0)
             {
                 Console.WriteLine("Incorrect input!");
+                return;
             }
     
             Something[] array = CreateArray(n);
@@ -68,6 +69,25 @@ namespace Task_01
              * пропустив этот элемент.
              * ...*/
 
+            double number;
+            for (int elem = 0; elem < n; ++elem)
+            {
+                if (rnd.Next() % 2 == 0)
+                {
+                    if (!double.TryParse(Console.ReadLine(), out number) ||
+                        number < 0 || number > 2)
+                        Console.WriteLine("Incorrect input!");
+                    else { array[elem] = new Lentil(number); }
+                }
+                else
+                {
+                    if (!double.TryParse(Console.ReadLine(), out number) ||
+                        number < 0 || number > 1)
+                        Console.WriteLine("Incorrect input!");
+                    else { array[elem] = new Ashes(number); }
+                }
+            }
+
             return array;
         }
 
@@ -76,6 +96,9 @@ namespace Task_01
             /*Выведите массив на экран в одну строку, 
              * разделяя элементы пробелами. Не забудьте переопредлить ToString().
              * ...*/
+            foreach (Something elem in array)
+                Console.Write(elem + " ");
+            Console.Write("\n");
         }
 
         static void PrintSeparately(Something[] array)
@@ -94,7 +117,15 @@ namespace Task_01
             Console.WriteLine(lentils);
             //вывод элементов Ashes реализуйте самостоятельно
             //...
-
+            string ashes = "";
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] is Ashes)
+                {
+                    ashes += $"{array[i]} ";
+                }
+            }
+            Console.WriteLine(ashes);
             /*Реализация для примера, которая забанена в рамках данного дз.
              *var lentilsCollection = array.Where(x => x is Lentil);
              *Console.WriteLine(String.Join(" ", lentilsCollection));*/
@@ -108,10 +139,12 @@ namespace Task_01
     class Lentil : Something
     {
         private double weight;
+
         public Lentil(double weight)
         {
             Weight = weight;
         }
+
         public double Weight
         {
             get
@@ -123,11 +156,32 @@ namespace Task_01
                 weight = value;
             }
         }
+
+        public override string ToString() => weight.ToString();
     }
 
     //реализуйте класс Ashes по аналогии с Lentil, используя auto-свойства!
     class Ashes : Something
     {
-        
+        private double volume;
+
+        public Ashes(double number)
+        {
+            Volume = number;
+        }
+
+        public double Volume
+        {
+            get
+            {
+                return volume;
+            }
+            set
+            {
+                volume = value;
+            }
+        }
+
+        public override string ToString() => volume.ToString();
     }
 }

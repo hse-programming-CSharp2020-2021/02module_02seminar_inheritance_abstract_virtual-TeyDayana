@@ -5,3 +5,10 @@ C:\Users\Lenovo X1 Extreme\source\repos\02module_02seminar\Task_01\obj\Debug\Tas
 C:\Users\Lenovo X1 Extreme\source\repos\02module_02seminar\Task_01\obj\Debug\Task_01.csproj.CoreCompileInputs.cache
 C:\Users\Lenovo X1 Extreme\source\repos\02module_02seminar\Task_01\obj\Debug\Task_01.exe
 C:\Users\Lenovo X1 Extreme\source\repos\02module_02seminar\Task_01\obj\Debug\Task_01.pdb
+C:\Users\dayan\Source\Repos\02module_02seminar_inheritance_abstract_virtual-TeyDayana\Task_01\bin\Debug\Task_01.exe.config
+C:\Users\dayan\Source\Repos\02module_02seminar_inheritance_abstract_virtual-TeyDayana\Task_01\bin\Debug\Task_01.exe
+C:\Users\dayan\Source\Repos\02module_02seminar_inheritance_abstract_virtual-TeyDayana\Task_01\bin\Debug\Task_01.pdb
+C:\Users\dayan\Source\Repos\02module_02seminar_inheritance_abstract_virtual-TeyDayana\Task_01\obj\Debug\Task_01.csprojAssemblyReference.cache
+C:\Users\dayan\Source\Repos\02module_02seminar_inheritance_abstract_virtual-TeyDayana\Task_01\obj\Debug\Task_01.csproj.CoreCompileInputs.cache
+C:\Users\dayan\Source\Repos\02module_02seminar_inheritance_abstract_virtual-TeyDayana\Task_01\obj\Debug\Task_01.exe
+C:\Users\dayan\Source\Repos\02module_02seminar_inheritance_abstract_virtual-TeyDayana\Task_01\obj\Debug\Task_01.pdb
